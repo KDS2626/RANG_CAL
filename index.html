@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RANG_CAL</title>
+    <title>토끼 계산기</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -98,7 +98,7 @@
             cursor: pointer;
         }
 
-        /* 토끼 귀 외부 */
+        /* 토끼 귀 스타일 */
         .ear {
             position:absolute;
             width: 300px;
@@ -119,7 +119,6 @@
         }
 
         
-        /* 토끼 귀 내부 */
         .in_ear {
             position:absolute;
             width: 150px;
@@ -141,8 +140,7 @@
             transform: rotate(90deg);
         }
 
-                
-        /* 토끼 귀 내부 */
+            
         .in_ear2 {
             position:absolute;
             width: 100px;
@@ -169,7 +167,6 @@
 
 <div id="calculator-container">
     <div id="calculator">
-        <!-- 토끼 귀 디자인-->
         <div class="ear left"></div>
         <div class="ear right"></div>
         <div class="in_ear left"></div>
@@ -299,6 +296,24 @@
             showHistoryButton.innerText = '기록 보기'; // 버튼 텍스트 변경
         }
     }
+
+    // 키보드 입력 처리
+    window.addEventListener('keydown', function(event) {
+        const key = event.key;
+
+        // 숫자와 연산자만 처리
+        const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/', '*', '-', '+', '.', 'Enter', 'Backspace'];
+        
+        if (validKeys.includes(key)) {
+            if (key === 'Enter') {
+                calculateResult();
+            } else if (key === 'Backspace') {
+                backspace();
+            } else {
+                appendToResult(key);
+            }
+        }
+    });
 </script>
 
 </body>
